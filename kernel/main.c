@@ -27,8 +27,6 @@
  *****************************************************************************/
 PUBLIC int kernel_main()
 {
-	disp_str("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-
 	int i, j, eflags, prio;
         u8  rpl;
         u8  priv; /* privilege */
@@ -331,7 +329,7 @@ void Init()
 	untar("/cmd.tar");
 			
 
-	char * tty_list[] = {"/dev_tty1", "/dev_tty2"};
+	char * tty_list[] = {"/dev_tty0","/dev_tty1", "/dev_tty2"};
 
 	int i;
 	for (i = 0; i < sizeof(tty_list) / sizeof(tty_list[0]); i++) {
