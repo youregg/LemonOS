@@ -23,7 +23,7 @@
  *======================================================================*/
 PUBLIC void cstart()
 {
-	disp_str("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n-----\"cstart\" begins-----\n");
+	//disp_str("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n-----\"cstart\" begins-----\n");
 
 	/* 将 LOADER 中的 GDT 复制到新的 GDT 中 */
 	memcpy(	&gdt,				   /* New GDT */
@@ -44,5 +44,5 @@ PUBLIC void cstart()
 
 	init_prot();
 
-	disp_str("-----\"cstart\" finished-----\n");
+	//disp_str("-----\"cstart\" finished-----\n");
 }
