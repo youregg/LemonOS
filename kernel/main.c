@@ -17,6 +17,10 @@
 #include "global.h"
 #include "proto.h"
 
+void welcome();
+void help();
+void clear();
+void readConsole();
 
 /*****************************************************************************
  *                               kernel_main
@@ -257,8 +261,13 @@ void shabby_shell(const char * tty_name)
 	assert(fd_stdout == 1);
 
 	char rdbuf[128];
+	char cmd[256];
+	char arg[256];
 
 	while (1) {
+		memset(rdbuf,'\0',128);
+		memset(cmd,'\0',256);
+		memset(arg,'\0',256);
 		write(1, "$ ", 2);
 		int r = read(0, rdbuf, 70);
 		rdbuf[r] = 0;
@@ -308,6 +317,7 @@ void shabby_shell(const char * tty_name)
 	close(1);
 	close(0);
 }
+
 
 /*****************************************************************************
  *                                Init
@@ -412,9 +422,34 @@ void welcome()
 	disp_str("********************************************************\n");
 }
 
+//system help
+void help()
+{
+	disp_str("\nSystem Instruction:");
+	disp_str("\n help: show command line information");
+	disp_str("\n ls:show all file");
+}
+
 //clear screen
 void clear()
 {
 	for(int i=0;i<30;i++)
 		disp_str("\n");
+}
+
+//read command from console
+void readConsole(char *str)
+{
+	char cmd[256];
+	memset(cmd,'\0',256);
+	if(strcmp(cmd,"help")==0){
+		help();
+	}
+	
+}
+
+//convert word to lower case 
+void convert()
+{
+	
 }

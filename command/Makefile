@@ -60,8 +60,8 @@ ls.o: ls.c ../include/type.h ../include/stdio.h
 ls : ls.o start.o $(LIB)
 	$(LD) $(LDFLAGS) -o $@ $?
 
-hole.o: hole.c ../include/type.h ../include/stdio.h
+help.o: help.c ../include/type.h ../include/stdio.h
 	$(CC) $(CFLAGS) -o $@ $<
 
-hole : hole.o start.o $(LIB)
+help : help.o start.o $(LIB)
 	$(LD) $(LDFLAGS) -o $@ $?
