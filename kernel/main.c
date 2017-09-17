@@ -178,7 +178,7 @@ struct posix_tar_header
  *****************************************************************************/
 void untar(const char * filename)
 {
-	//printf("[extract `%s'\n", filename);
+	printf("[extract `%s'\n", filename);
 	int fd = open(filename, O_RDWR);
 	assert(fd != -1);
 
@@ -194,7 +194,7 @@ void untar(const char * filename)
 					       */
 		if (buf[0] == 0) {
 			if (i == 0)
-				//printf("    need not unpack the file.\n");
+				printf("    need not unpack the file.\n");
 			break;
 		}
 		i++;
@@ -210,8 +210,8 @@ void untar(const char * filename)
 		int bytes_left = f_len;
 		int fdout = open(phdr->name, O_CREAT | O_RDWR | O_TRUNC);
 		if (fdout == -1) {
-			//printf("    failed to extract file: %s\n", phdr->name);
-			//printf(" aborted]\n");
+			printf("    failed to extract file: %s\n", phdr->name);
+			printf(" aborted]\n");
 			close(fd);
 			return;
 		}
@@ -223,9 +223,9 @@ void untar(const char * filename)
 			bytes = write(fdout, buf, iobytes);
 			assert(bytes == iobytes);
 			bytes_left -= iobytes;
-			//printf(".");
+			printf(".");
 		}
-		//printf("\n");
+		printf("\n");
 		close(fdout);
 	}
 
@@ -238,7 +238,7 @@ void untar(const char * filename)
 
 	close(fd);
 
-	//printf(" done, %d files extracted]\n", i);
+	printf(" done, %d files extracted]\n", i);
 }
 
 /*****************************************************************************
@@ -402,7 +402,7 @@ PUBLIC void panic(const char *fmt, ...)
 
 //welcome information
 void welcome()
-{
+{	disp_str("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 	disp_str("\n********************************************************\n");
 	disp_str("*                                                      *\n");
 	disp_str("*              Welcome to Lemon OS                     *\n");
